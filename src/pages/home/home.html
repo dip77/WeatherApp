@@ -1,14 +1,58 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Weather App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<form>
+<div class="d" >
+<ion-item>
+  <ion-label floating>City</ion-label>
+  <ion-input type="text" #cityName ></ion-input>
+</ion-item>
+
+<button ion-button icon-center (click)="(show(cityName.value))">
+  <ion-icon name="search"></ion-icon>
+  Find Weather
+</button>
+</div>
+
+<ion-list  *ngIf="showHi">
+<ion-item text-center >
+ <strong>  Weather Details of {{city}}</strong>
+    </ion-item>
+
+   <ion-item text-center >
+    Wind:{{wind}}
+    </ion-item>
+   <ion-item text-center >
+    Humidity:{{humidity}}
+    </ion-item>
+
+     <ion-item text-center >
+        Visibility:{{visibility}}
+    </ion-item>
+
+   <ion-item text-center >
+    Max:{{temperatureMax}} 
+    </ion-item>
+   <ion-item text-center >
+    Min:{{temperatureMin}} 
+    </ion-item>
+    
+    
+</ion-list>
+
+
+</form>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>By dip Halani</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+
+
