@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
-
+import 'rxjs/add/operator/toPromise'
 @Injectable()
 export class WeatherProvider
 {	
@@ -17,7 +17,7 @@ export class WeatherProvider
 
 
 	}
-	getData(city)
+	getDataByCity(city)
 
 	{
 
@@ -25,6 +25,16 @@ export class WeatherProvider
         + city + ',in&appid=' + this.OpenWeatherAppKey + '&units=imperial';
 		return this.http.get(this.queryString)
 		.map(res => res.json());
+	}
+	getDataByLocation(lon:number,lat:number)
+
+	{
+		
+		this.queryString= 'http://api.openweathermap.org/data/2.5/weather?lat='
+        +lat+"&lon="+lon 
+         + '&appid=' + this.OpenWeatherAppKey + '&units=imperial';
+		return this.http.get(this.queryString)
+		.map(res => res.json()).toPromise();
 	}
 
 
